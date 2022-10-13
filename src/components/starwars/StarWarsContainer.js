@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
+import { DarkModeContext } from "../../context/DarkModeContext"
 
 const StarWarsContainer = () => {
 
     const [people, setPeople] = useState([])
+
+    
+    const DarkMode = useContext (DarkModeContext)
+
 
     useEffect(()=>{
         getPeople()
@@ -23,6 +28,10 @@ const StarWarsContainer = () => {
     <div>
         <h1>StarWarsContainer</h1>
         { people.map( p => <li key={p.url}> {p.name} </li> ) }
+    
+        <div className="m-8">
+          <strong>DarkMode:_{DarkMode ? 'Activado' : 'Desactivado'}</strong>
+        </div>
     </div>
   )
 }
